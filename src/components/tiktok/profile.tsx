@@ -334,8 +334,8 @@ export function TikTokProfile({ username }: TikTokProfileProps) {
                 <AlertCircle className="h-4 w-4" />
                 <AlertTitle>Videos không khả dụng</AlertTitle>
                 <AlertDescription>
-                  Không thể tải danh sách video. Hãy thử lại sau hoặc xem trực tiếp
-                  trên TikTok.
+                  Không thể tải danh sách video. Hãy thử lại sau hoặc xem trực
+                  tiếp trên TikTok.
                 </AlertDescription>
               </Alert>
 
@@ -382,7 +382,8 @@ export function TikTokProfile({ username }: TikTokProfileProps) {
                 <AlertCircle className="h-4 w-4" />
                 <AlertTitle>Reposts chưa khả dụng</AlertTitle>
                 <AlertDescription>
-                  Tính năng xem reposts đang được phát triển. Hãy xem trực tiếp trên TikTok.
+                  Tính năng xem reposts đang được phát triển. Hãy xem trực tiếp
+                  trên TikTok.
                 </AlertDescription>
               </Alert>
 
@@ -791,24 +792,24 @@ function StoryPlayerModal({
       // Reset refs
       progressRef.current = 0;
       imageIndexRef.current = 0;
-      
+
       const imageCount = story.images?.length || 1;
       const durationPerImage = 5000; // 5 seconds per image
       const updateInterval = 50; // Update every 50ms
-      
+
       let elapsed = 0;
       const totalDuration = durationPerImage * imageCount;
-      
+
       photoTimerRef.current = setInterval(() => {
         elapsed += updateInterval;
         const newProgress = (elapsed / totalDuration) * 100;
-        
+
         // Only update state when value changes significantly
         if (Math.abs(newProgress - progressRef.current) > 1) {
           progressRef.current = newProgress;
           setProgress(newProgress);
         }
-        
+
         // Update current image index
         const newImageIndex = Math.min(
           Math.floor(elapsed / durationPerImage),
@@ -818,12 +819,12 @@ function StoryPlayerModal({
           imageIndexRef.current = newImageIndex;
           setCurrentImageIndex(newImageIndex);
         }
-        
+
         if (elapsed >= totalDuration) {
           onNext();
         }
       }, updateInterval);
-      
+
       return () => {
         if (photoTimerRef.current) {
           clearInterval(photoTimerRef.current);
@@ -835,7 +836,7 @@ function StoryPlayerModal({
   // For video stories
   useEffect(() => {
     if (story.isPhoto) return;
-    
+
     const video = videoRef.current;
     if (!video) return;
 
@@ -877,7 +878,7 @@ function StoryPlayerModal({
   const toggleMute = () => {
     const newMuted = !isMuted;
     setIsMuted(newMuted);
-    
+
     // Mute video if exists
     if (videoRef.current) {
       videoRef.current.muted = newMuted;
@@ -915,17 +916,19 @@ function StoryPlayerModal({
     try {
       let downloadUrl: string;
       let filename: string;
-      
+
       if (story.isPhoto && story.images && story.images.length > 0) {
         downloadUrl = story.images[currentImageIndex] || story.coverUrl;
-        filename = `tiktok_story_${username}_${story.id}_${currentImageIndex + 1}.jpg`;
+        filename = `tiktok_story_${username}_${story.id}_${
+          currentImageIndex + 1
+        }.jpg`;
       } else if (story.videoUrl) {
         downloadUrl = story.videoUrl;
         filename = `tiktok_story_${username}_${story.id}.mp4`;
       } else {
         return;
       }
-      
+
       const response = await fetch(downloadUrl);
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
@@ -938,8 +941,8 @@ function StoryPlayerModal({
       window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error("Download failed:", error);
-      const fallbackUrl = story.isPhoto 
-        ? (story.images?.[currentImageIndex] || story.coverUrl)
+      const fallbackUrl = story.isPhoto
+        ? story.images?.[currentImageIndex] || story.coverUrl
         : story.videoUrl;
       if (fallbackUrl) window.open(fallbackUrl, "_blank");
     }

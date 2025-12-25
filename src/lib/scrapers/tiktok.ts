@@ -138,11 +138,11 @@ async function fetchStoriesFromTikWM(username: string): Promise<TikTokStory[]> {
     return data.data.videos.map((story) => {
       const hasImages = story.images && story.images.length > 0;
       const isPhoto = hasImages || story.duration === 0;
-      
+
       return {
         id: story.video_id || "",
         coverUrl: story.cover || story.origin_cover || "",
-        videoUrl: isPhoto ? undefined : (story.play || ""),
+        videoUrl: isPhoto ? undefined : story.play || "",
         images: hasImages ? story.images : undefined,
         duration: story.duration || 0,
         timestamp: story.create_time || 0,

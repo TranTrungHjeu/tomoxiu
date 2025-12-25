@@ -1,4 +1,4 @@
-import { ComingSoon } from "@/components/coming-soon";
+import { TikTokProfile } from "@/components/tiktok/profile";
 
 interface PageProps {
   params: Promise<{ username: string }>;
@@ -7,11 +7,11 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps) {
   const { username } = await params;
   return {
-    title: `@${username} - TikTok Profile | Stalker`,
+    title: `@${username} - TikTok Profile`,
   };
 }
 
 export default async function TikTokProfilePage({ params }: PageProps) {
   const { username } = await params;
-  return <ComingSoon platform="TikTok" username={username} />;
+  return <TikTokProfile username={username} />;
 }

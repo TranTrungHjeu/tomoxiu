@@ -1,4 +1,4 @@
-import { ComingSoon } from "@/components/coming-soon";
+import { FacebookProfile } from "@/components/facebook/profile";
 
 interface PageProps {
   params: Promise<{ username: string }>;
@@ -7,11 +7,11 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps) {
   const { username } = await params;
   return {
-    title: `${username} - Facebook Profile | Stalker`,
+    title: `${username} - Facebook Profile`,
   };
 }
 
 export default async function FacebookProfilePage({ params }: PageProps) {
   const { username } = await params;
-  return <ComingSoon platform="Facebook" username={username} />;
+  return <FacebookProfile username={username} />;
 }

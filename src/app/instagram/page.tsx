@@ -36,7 +36,7 @@ export default function InstagramPage() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-12"
       >
-        <div className="inline-flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-pink-500 via-red-500 to-orange-500 text-white mb-6">
+        <div className="inline-flex h-20 w-20 items-center justify-center rounded-2xl bg-linear-to-br from-pink-500 via-red-500 to-orange-500 text-white mb-6">
           <Instagram className="h-10 w-10" />
         </div>
         <h1 className="text-3xl font-bold mb-4">Instagram Viewer</h1>
@@ -54,7 +54,7 @@ export default function InstagramPage() {
         className="max-w-xl mx-auto"
       >
         <div className="relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 via-red-500 to-orange-500 rounded-2xl blur-lg opacity-25 group-hover:opacity-40 transition-opacity" />
+          <div className="absolute -inset-1 bg-linear-to-r from-pink-500 via-red-500 to-orange-500 rounded-2xl blur-lg opacity-25 group-hover:opacity-40 transition-opacity" />
           <div className="relative flex items-center gap-2 bg-card border border-border rounded-xl p-2">
             <div className="flex items-center gap-2 pl-4 text-muted-foreground">
               <Search className="h-5 w-5" />
@@ -70,7 +70,7 @@ export default function InstagramPage() {
             <Button
               type="submit"
               disabled={!username.trim()}
-              className="bg-gradient-to-r from-pink-500 via-red-500 to-orange-500 text-white rounded-lg px-6"
+              className="bg-linear-to-r from-pink-500 via-red-500 to-orange-500 text-white rounded-lg px-6"
             >
               Tìm kiếm
             </Button>

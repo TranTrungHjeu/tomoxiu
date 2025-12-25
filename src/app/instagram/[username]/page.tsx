@@ -7,7 +7,7 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps) {
   const { username } = await params;
   return {
-    title: `@${username} - Instagram Profile | Stalker`,
+    title: `@${username} - Instagram Profile`,
     description: `Xem profile Instagram công khai của @${username}`,
   };
 }
